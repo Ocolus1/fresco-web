@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect } from 'react';
+import { useRouter } from 'next/navigation'
 
 import CardTemplate from "@/components/TopCardTemplate"
 import TableTemplate from "@/components/TableTemplate"
@@ -22,9 +23,13 @@ const cardContent = [
 			<RiHomeSmile2Line className="h-8 w-8 p-1.5 bg-[#F4EBFF] text-[#7F56D9] rounded-lg" />
 		),
 		content: 'Unique Peices Generated',
+		contentFont: "text-sm",
 		number: '22,000',
+		numberFont: 'text-2xl',
+		widthHeight: "h-2.5",
 		width: '45%',
 		color: 'bg-[#7F56D9]',
+		divWidth: 'w-[389.33px]',
 	},
 	{
 		id: 2,
@@ -32,9 +37,13 @@ const cardContent = [
 			<FaUmbrellaBeach className="h-8 w-8 p-1.5 bg-[#F4EBFF] text-[#079455] rounded-lg" />
 		),
 		content: 'Join the community',
+		contentFont: "text-sm",
 		number: '12000+',
+		numberFont: 'text-2xl',
+		widthHeight: "h-2.5",
 		width: '92%',
 		color: 'bg-[#079455]',
+		divWidth: 'w-[389.33px]',
 	},
 	{
 		id: 3,
@@ -42,19 +51,28 @@ const cardContent = [
 			<CiDatabase className="h-8 w-8 p-1.5 bg-[#F4EBFF] text-[#1570EF] rounded-lg" />
 		),
 		content: 'Total Fresco Burned',
+		contentFont: "text-sm",
 		number: '$41,382.80',
+		numberFont: 'text-2xl',
+		widthHeight: "h-2.5",
 		width: '65%',
 		color: 'bg-[#1570EF]',
+		divWidth: 'w-[389.33px]',
 	},
 ];
 
 export default function Home() {
-  const { user, loading, isLoggedIn } = useSelector((state) => state.auth);
+  const { isLoggedIn } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const router =  useRouter();
 
 	useEffect(() => {
 		dispatch(fetchUser());
 	}, [dispatch]);
+
+	if (isLoggedIn) {
+		router.push("/home")
+	}
 	return (
     <div className="flex items-center flex-col justify-center ">
       <div className="mb-10 xl:w-10/12">
