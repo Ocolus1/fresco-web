@@ -5,12 +5,8 @@ import { useState } from 'react';
 
 import { FaPlay } from 'react-icons/fa';
 
-export default function Widget() {
-	const [isAnimating, setIsAnimating] = useState(false);
-
-	const handleClick = () => {
-		setIsAnimating(!isAnimating);
-	};
+export default function Widget({isAnimating, handleClick}) {
+	
 	return (
 		<div className="flex items-center justify-center">
 			<div className="relative flex items-center justify-center w-40 h-40 bg-white rounded-full">
